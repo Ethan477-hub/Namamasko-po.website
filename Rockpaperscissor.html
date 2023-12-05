@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rock, Paper, Scissors Game</h1>
+
+  <button onclick="playGame('rock')">Rock</button>
+  <button onclick="playGame('paper')">Paper</button>
+  <button onclick="playGame('scissors')">Scissors</button>
+
+  <p id="result"></p>
+
+  <script>
+    function playGame(userChoice) {
+      var choices = ['rock', 'paper', 'scissors'];
+      var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      var resultParagraph = document.getElementById("result");
+
+      resultParagraph.innerHTML = "You chose: " + userChoice + "<br>Computer chose: " + computerChoice + "<br>";
+
+      if (userChoice === computerChoice) {
+        resultParagraph.innerHTML += "It's a tie!";
+      } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        resultParagraph.innerHTML += "You win!";
+      } else {
+        resultParagraph.innerHTML += "You lose!";
+      }
+    }
+  </script>
+
+</body>
+</html>
